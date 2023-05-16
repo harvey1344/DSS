@@ -63,7 +63,9 @@ const loginLimiter = rateLimit({
 
 // send the login page to the client
 login.get("/", (req, res) => {
-    res.sendFile("login.html", { root: "../frontend" });
+    // crsf token added to response
+    //res.locals.csrfToken = req.csrfToken();
+    res.sendFile("login.html", { root: "./frontend" });
 });
 
 login.post("/login", loginLimiter, jsonParser, async (req, res) => {
@@ -72,6 +74,7 @@ login.post("/login", loginLimiter, jsonParser, async (req, res) => {
     let userName = steraliseInput(req.body.userName);
     let password = steraliseInput(req.body.password);
     let twoFA = steraliseInput(req.body.twoFA);
+    //let csrfToken = steraliseInput(req.body["X-CSRF-Token"]);
 
     console.log(userName, password, "username and password");
     //decrypt the password before hashing

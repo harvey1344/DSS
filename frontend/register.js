@@ -46,21 +46,26 @@ const getRegistration = async () => {
     const saltedPassword = password + salt;
     const hash = CryptoJS.SHA256(saltedPassword).toString();
     // send user details to database with use of fetch API
-    fetch("/register", {
-        // Adding method type
-        method: "POST",
-        // Adding body or contents to send
-        body: JSON.stringify({
+fetch("/csrf-token", {
+        credentials: "include", // Include cookies in the request
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        const csrfToken = data.csrfToken;
+        return fetch("/register", {
+            method: "POST",
+            body: JSON.stringify({
             name,
             userName,
             email,
             hash,
             salt,
-        }),
-        // Adding headers to the request
-        headers: {
-            "Content-type": "application/json; charset=UTF-8",
-        },
+            }),
+            headers: {
+                "X-CSRF-Token": csrfToken,
+                "Content-type": "application/json; charset=UTF-8",
+            },
+      })
     })
         .then(function (res) {
             if (!res.ok) {
@@ -100,12 +105,12 @@ const getRegistration = async () => {
 
             showSuccessAlert();
         })
-        .catch(function (error) {
+        .catch((error) => {
+            console.log("Error:", error);
             // Handle the error here
             //do nothing
         });
-};
-
+    };
 // function to check if password is in the most common password
 const isPasswordCommon = (password, commonPasswords) => {
     return commonPasswords.includes(password);

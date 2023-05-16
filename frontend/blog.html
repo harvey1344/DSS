@@ -7,6 +7,7 @@
     <meta name="description" content="" />
     <link rel="stylesheet" href="main.css">
     <script src="/inputSterilisation.js"></script>
+    <meta name="X-CSRF-Token" content="{{csrfToken}}">
 
 </head>
 <body>
@@ -16,6 +17,7 @@
         <label htmlfor="search">Search Posts</label>
         <input class="text" type="text" id="searchBar" name="searchBar" required>
         <input type="submit" value="Search" id="submitSearch">
+        <!-- <input type="hidden" name="_csrf" value="{{csrfToken}}"> -->
     </form>
     <div id="cancel-container"></div>
     <div id="posts-container" class = "posts-container" ></div>

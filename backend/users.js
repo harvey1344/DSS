@@ -14,7 +14,7 @@ const CryptoJS = require("crypto-js");
 require("dotenv").config({ path: "./config.env" });
 
 user.get("/", (req, res) => {
-    res.sendFile("register.html", { root: "../frontend" });
+    res.sendFile("register.html", { root: "./frontend" });
 });
 
 user.post("/", jsonParser, async (req, res) => {

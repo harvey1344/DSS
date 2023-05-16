@@ -5,6 +5,7 @@
     <title>Login</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="" />
+    <meta name="X-CSRF-Token" content="{{csrfToken}}">
     <link rel="stylesheet" href="main.css">
     <script src="hashing"></script>
     <script src="login.js"></script>
@@ -26,9 +27,12 @@
             <input class="textBox" type="password" id="password" name="password" placeholder="******">
             <label htmlfor="twoFactor">2FA code</label>
             <input class="textBox" type="number" id="twoFactor" name="twoFactor" placeholder="123456">
+
+            <!-- <input type="hidden" name="_csrf" value="{{csrfToken}}"> -->
+            
             <input type="submit" value="Login" id="Login">
         </form>
-        <a href="/register">New User?</a>
+        <a href="/frontend/register.js">New User?</a>
     </div>
 </body>
 </html>
