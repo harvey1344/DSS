@@ -3,22 +3,48 @@
 <head>
   <title>Naughty Naughty</title>
   <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
     .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
-      margin-top: 50px;
-      font-size: 48px;
+      color: #333;
+    }
+    .center h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
     }
     img {
       width: 30%;
+      border-radius: 50%;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #f44336;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #d32f2f;
     }
   </style>
 </head>
 <body>
   <div class="center">
-    <h1>NAUGHTY NAUGHTY</h1>
+    <h1>Naughty Naughty!</h1>
     <img src="https://www.freepnglogos.com/uploads/hacker-png/hacker-mid-pacific-ict-center-cyberfed-magnificent-seven-2.png" alt="GET OUT">
-    <br><br>
-    <button onclick="redirect()">Click Me!</button>
+    <button onclick="redirect()">Go Back</button>
   </div>
 
   <script>
